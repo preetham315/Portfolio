@@ -527,6 +527,10 @@ ul li::before {
   perspective: 1000px;
 }
 
+.new-card{
+  
+}
+
 
 .flip-card-inner {
   position: relative;
