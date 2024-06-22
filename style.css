@@ -209,6 +209,7 @@ section {
 #dynamic-title {
   transition: opacity 0.5s ease-in-out;
 }
+
 .hidden {
   opacity: 0;
 }
@@ -326,7 +327,8 @@ section {
   color: #444;
   line-height: 1.6;
   margin-bottom: 10px;
-  text-align: justify; /* Ensure this justifies the text content */
+  text-align: justify;
+  /* Ensure this justifies the text content */
 }
 
 
@@ -334,7 +336,8 @@ section {
 
 #experience {
   padding: 50px 20px;
-  background-color: white; /* Set the background to white */
+  background-color: white;
+  /* Set the background to white */
   text-align: center;
 }
 
@@ -353,9 +356,12 @@ section {
 .experience-box {
   background: white;
   padding: 20px;
-  border-radius: 20px; /* Smooth rounded corners */
-  width: 800px; /* Fixed width */
-  height: 600px; /* Fixed height */
+  border-radius: 20px;
+  /* Smooth rounded corners */
+  width: 800px;
+  /* Fixed width */
+  height: 600px;
+  /* Fixed height */
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -372,10 +378,13 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: justify; /* Justify text */
+  text-align: justify;
+  /* Justify text */
 }
 
-.intro-container, .accomplishments-container, .skills-container {
+.intro-container,
+.accomplishments-container,
+.skills-container {
   display: none;
   position: absolute;
   width: 100%;
@@ -388,7 +397,9 @@ section {
   transition: opacity 1.5s ease-in-out;
 }
 
-.intro-container.active, .accomplishments-container.active, .skills-container.active {
+.intro-container.active,
+.accomplishments-container.active,
+.skills-container.active {
   display: block;
   opacity: 1;
 }
@@ -398,26 +409,33 @@ section {
   transition: opacity 1.5s ease-in-out;
 }
 
-.accomplishments-container h2, .skills-container h2 {
+.accomplishments-container h2,
+.skills-container h2 {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 15px;
-  text-align: center; /* Center align headings */
+  text-align: center;
+  /* Center align headings */
 }
 
-.accomplishment, .skill {
+.accomplishment,
+.skill {
   margin-bottom: 15px;
-  text-align: left; /* Left-align text */
+  text-align: left;
+  /* Left-align text */
 }
 
-.accomplishment h3, .skill h3 {
+.accomplishment h3,
+.skill h3 {
   font-size: 1.2rem;
   color: #222;
   margin-bottom: 5px;
-  text-align: left; /* Left-align subheadings */
+  text-align: left;
+  /* Left-align subheadings */
 }
 
-.accomplishment p, .skill p {
+.accomplishment p,
+.skill p {
   font-size: 1rem;
   color: #444;
 }
@@ -442,11 +460,14 @@ section {
 }
 
 ul {
-  text-align: left; /* Align bullet points to the left */
+  text-align: left;
+  /* Align bullet points to the left */
   margin: 0 auto;
   padding: 0 20px;
-  list-style: none; /* Remove default bullet points */
-  padding-left: 1.2em; /* Indent bullet points */
+  list-style: none;
+  /* Remove default bullet points */
+  padding-left: 1.2em;
+  /* Indent bullet points */
 }
 
 ul li {
@@ -454,7 +475,8 @@ ul li {
 }
 
 ul li::before {
-  content: "•"; /* Custom bullet point */
+  content: "•";
+  /* Custom bullet point */
   position: absolute;
   left: -1.2em;
   color: #222;
@@ -484,8 +506,10 @@ ul li::before {
   padding: 50px 20px;
   background-color: white;
   text-align: center;
-  max-height: 80vh; /* Adjust based on your preference */
-  overflow-y: hidden; /* Hide vertical scroll */
+  max-height: 80vh;
+  /* Adjust based on your preference */
+  overflow-y: hidden;
+  /* Hide vertical scroll */
 }
 
 .color-container {
@@ -494,7 +518,8 @@ ul li::before {
   margin: 20px;
   padding: 20px;
   border-radius: 20px;
-  width: calc(25% - 40px); /* Adjusted to fit three in a row */
+  width: calc(25% - 40px);
+  /* Adjusted to fit three in a row */
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
@@ -502,14 +527,17 @@ ul li::before {
 
 .project-img {
   border-radius: 2rem;
-  width: 70%; /* Reduced size */
-  height: 70%; /* Reduced size */
+  width: 70%;
+  /* Reduced size */
+  height: 70%;
+  /* Reduced size */
 }
 
 .project-title {
   margin: 1rem 0;
   color: black;
-  font-size: 1rem; /* Reduced size */
+  font-size: 1rem;
+  /* Reduced size */
 }
 
 .project-btn {
@@ -523,12 +551,13 @@ ul li::before {
 .flip-card {
   background-color: transparent;
   width: 100%;
-  height: 300px; /* Adjusted height */
-  perspective: 1000px;
+  height: 400px;
+  /* Adjusted height */
+
 }
 
-.new-card{
-  
+.new-card {
+  perspective: 1000px;
 }
 
 
@@ -545,16 +574,18 @@ ul li::before {
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 65px);
   backface-visibility: hidden;
   border-radius: 20px;
 }
 
 .flip-card-front {
-  background-color: transparent; /* Removed background */
+  background-color: transparent;
+  /* Removed background */
   color: black;
 }
 
@@ -567,6 +598,7 @@ ul li::before {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  height: 100%;
 }
 
 .project-description {
@@ -574,7 +606,8 @@ ul li::before {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* Number of lines to show */
+  -webkit-line-clamp: 5;
+  /* Number of lines to show */
   -webkit-box-orient: vertical;
 }
 
