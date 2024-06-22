@@ -66,18 +66,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const flipButtons = document.querySelectorAll(".flip-btn");
-  const flipCards = document.querySelectorAll(".flip-card");
+  // const flipButtons = document.querySelectorAll(".flip-btn");
+  // const flipCards = document.querySelectorAll(".flip-card");
 
-  flipButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const flipCard =
-        this.closest(".about-containers").querySelector(".flip-card");
-      flipCard.classList.toggle("flip-active");
-      setTimeout(() => {
-        flipCard.classList.remove("flip-active");
-      }, 5000); // Flip back after 5 seconds
-    });
+  // flipButtons.forEach((button) => {
+  //   button.addEventListener("click", function () {
+  //     const flipCard =
+  //       this.closest(".about-containers").querySelector(".flip-card");
+  //     flipCard.classList.toggle("flip-active");
+  //     setTimeout(() => {
+  //       flipCard.classList.remove("flip-active");
+  //     }, 5000); // Flip back after 5 seconds
+  //   });
+  // });
+
+  const buttonIds = ["project-btn-1", "project-btn-2", "project-btn-3"]; // Add all your button IDs here
+  const cardIds = ["project-card-1", "project-card-2", "project-card-3"]; // Add all your flip card IDs here
+
+  buttonIds.forEach((id, index) => {
+    const flipButton = document.getElementById(id);
+    if (flipButton) {
+      flipButton.addEventListener("click", function () {
+        const flipCard = document.getElementById(cardIds[index]);
+        if (flipCard) {
+          flipCard.classList.toggle("flip-active");
+          setTimeout(() => {
+            flipCard.classList.remove("flip-active");
+          }, 5000); // Flip back after 5 seconds
+        }
+      });
+    }
   });
 
   // Ensure text fits within flip card
