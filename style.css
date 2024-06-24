@@ -506,7 +506,7 @@ ul li::before {
   padding: 50px 20px;
   background-color: white;
   text-align: center;
-  max-height: 80vh;
+  max-height: 140vh;
   /* Adjust based on your preference */
   overflow-y: hidden;
   /* Hide vertical scroll */
@@ -626,11 +626,6 @@ ul li::before {
   }
 }
 
-/* Ensuring arrow is always visible */
-.icon.arrow {
-  position: sticky;
-  bottom: 10px;
-}
 
 /* CONTACT */
 

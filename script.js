@@ -66,22 +66,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // const flipButtons = document.querySelectorAll(".flip-btn");
-  // const flipCards = document.querySelectorAll(".flip-card");
+  const buttonIds = [
+    "project-btn-1",
+    "project-btn-2",
+    "project-btn-3",
+    "project-btn-4",
+    "project-btn-5",
+    "project-btn-6",
+    "project-btn-7",
+    "project-btn-8",
+    "project-btn-9",
+    "project-btn-10",
+    "project-btn-11",
+    "project-btn-12",
+    
+  ];
 
-  // flipButtons.forEach((button) => {
-  //   button.addEventListener("click", function () {
-  //     const flipCard =
-  //       this.closest(".about-containers").querySelector(".flip-card");
-  //     flipCard.classList.toggle("flip-active");
-  //     setTimeout(() => {
-  //       flipCard.classList.remove("flip-active");
-  //     }, 5000); // Flip back after 5 seconds
-  //   });
-  // });
-
-  const buttonIds = ["project-btn-1", "project-btn-2", "project-btn-3"]; // Add all your button IDs here
-  const cardIds = ["project-card-1", "project-card-2", "project-card-3"]; // Add all your flip card IDs here
+  const cardIds = [
+    "project-card-1",
+    "project-card-2",
+    "project-card-3",
+    "project-card-4",
+    "project-card-5",
+    "project-card-6",
+    "project-card-7",
+    "project-card-8",
+    "project-card-9",
+    "project-card-10",
+    "project-card-11",
+    "project-card-12",
+  ];
 
   buttonIds.forEach((id, index) => {
     const flipButton = document.getElementById(id);
@@ -97,6 +111,38 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+  // Function to display six projects at a time and rotate them
+  let currentProjectIndex = 0;
+  const cardsPerPage = 6; // Number of cards to show at once
+  const totalProjects = cardIds.length;
+  let interval;
+
+  function showProjects(startIndex) {
+    cardIds.forEach((id, index) => {
+      const card = document.getElementById(id);
+      if (index >= startIndex && index < startIndex + cardsPerPage) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function startRotation() {
+    interval = setInterval(() => {
+      currentProjectIndex = (currentProjectIndex + cardsPerPage) % totalProjects;
+      showProjects(currentProjectIndex);
+    }, 2000); // Change every 2 seconds
+  }
+
+  function stopRotation() {
+    clearInterval(interval);
+  }
+
+  // Start rotating projects
+  showProjects(currentProjectIndex);
+  startRotation();
 
   // Ensure text fits within flip card
   const adjustTextSize = () => {
