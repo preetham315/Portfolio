@@ -558,6 +558,7 @@ ul li::before {
 
 .new-card {
   perspective: 1000px;
+  min-width: 350px;
 }
 
 
