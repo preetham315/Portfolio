@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cardIds.forEach((id, index) => {
       const card = document.getElementById(id);
       if (index >= startIndex && index < startIndex + cardsPerPage) {
-        card.style.display = "block";
+        card.style.display = "inline-block";
       } else {
         card.style.display = "none";
       }
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     interval = setInterval(() => {
       currentProjectIndex = (currentProjectIndex + cardsPerPage) % totalProjects;
       showProjects(currentProjectIndex);
-    }, 4000); // Change every 4 seconds
+    }, 10000); // Change every 10 seconds for a slower transition
   }
 
   function stopRotation() {
