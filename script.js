@@ -66,6 +66,44 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll(".skill-content > div");
+  let current = 0;
+  let interval;
+
+  function showSection(index) {
+    sections.forEach((section, i) => {
+      section.classList.remove("active");
+      if (i === index) {
+        section.classList.add("active");
+      }
+    });
+  }
+
+  function startTransition() {
+    interval = setInterval(() => {
+      sections[current].classList.add("hidden");
+      setTimeout(() => {
+        sections[current].classList.remove("hidden");
+        current = (current + 1) % sections.length;
+        showSection(current);
+      }, 1500); // Match this with the CSS transition duration
+    }, 5000); // Change every 5 seconds for a slower transition
+  }
+
+  function stopTransition() {
+    clearInterval(interval);
+  }
+
+  sections.forEach((section) => {
+    section.addEventListener("mouseenter", stopTransition);
+    section.addEventListener("mouseleave", startTransition);
+  });
+
+  showSection(current);
+  startTransition();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   const buttonIds = [
     "project-btn-1",
     "project-btn-2",
@@ -79,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "project-btn-10",
     "project-btn-11",
     "project-btn-12",
-    
+    // Add more button IDs here if needed
   ];
 
   const cardIds = [
@@ -95,24 +133,9 @@ document.addEventListener("DOMContentLoaded", function () {
     "project-card-10",
     "project-card-11",
     "project-card-12",
+    // Add more card IDs here if needed
   ];
 
-  buttonIds.forEach((id, index) => {
-    const flipButton = document.getElementById(id);
-    if (flipButton) {
-      flipButton.addEventListener("click", function () {
-        const flipCard = document.getElementById(cardIds[index]);
-        if (flipCard) {
-          flipCard.classList.toggle("flip-active");
-          setTimeout(() => {
-            flipCard.classList.remove("flip-active");
-          }, 5000); // Flip back after 5 seconds
-        }
-      });
-    }
-  });
-
-  // Function to display six projects at a time and rotate them
   let currentProjectIndex = 0;
   const cardsPerPage = 6; // Number of cards to show at once
   const totalProjects = cardIds.length;
@@ -133,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     interval = setInterval(() => {
       currentProjectIndex = (currentProjectIndex + cardsPerPage) % totalProjects;
       showProjects(currentProjectIndex);
-    }, 2000); // Change every 2 seconds
+    }, 4000); // Change every 4 seconds
   }
 
   function stopRotation() {
@@ -143,6 +166,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // Start rotating projects
   showProjects(currentProjectIndex);
   startRotation();
+
+  buttonIds.forEach((id, index) => {
+    const flipButton = document.getElementById(id);
+    if (flipButton) {
+      flipButton.addEventListener("click", function () {
+        const flipCard = document.getElementById(cardIds[index]);
+        if (flipCard) {
+          stopRotation(); // Stop rotation when a card is flipped
+          flipCard.classList.toggle("flip-active");
+          setTimeout(() => {
+            flipCard.classList.remove("flip-active");
+            startRotation(); // Restart rotation after flip-back
+          }, 5000); // Flip back after 5 seconds
+        }
+      });
+    }
+  });
 
   // Ensure text fits within flip card
   const adjustTextSize = () => {
@@ -161,4 +201,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("resize", adjustTextSize);
   adjustTextSize();
+
+  // Stop rotation on hover and restart on leave
+  const projectsSection = document.getElementById("projects");
+  projectsSection.addEventListener("mouseenter", stopRotation);
+  projectsSection.addEventListener("mouseleave", startRotation);
+
+  // Stop rotation on hovering over individual cards
+  cardIds.forEach((id) => {
+    const card = document.getElementById(id);
+    if (card) {
+      card.addEventListener("mouseenter", stopRotation);
+      card.addEventListener("mouseleave", startRotation);
+    }
+  });
 });
